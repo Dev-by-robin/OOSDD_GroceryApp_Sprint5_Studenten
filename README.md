@@ -1,4 +1,4 @@
-#GroceryApp sprint5 Studentversie  
+#GroceryApp Sprint 5 Studentversie  
 Dit is de startversie voor studenten voor sprint 5.  
  
 UC15 Toevoegen THT datum aan product is compleet.  
