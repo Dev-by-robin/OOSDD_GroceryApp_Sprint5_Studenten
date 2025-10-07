@@ -2,6 +2,7 @@
 using Grocery.Core.Interfaces.Services;
 using System.Collections.ObjectModel;
 using Grocery.Core.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Grocery.App.ViewModels
 {
@@ -9,6 +10,9 @@ namespace Grocery.App.ViewModels
     {
         private readonly ICategoryService _categoryService;
         public ObservableCollection<Category> Categories { get; set; }
+        // Naam per productcategorie
+        [ObservableProperty]
+        public string? categoryName;
 
         public CategoriesViewModel(ICategoryService categoryService)
         {
@@ -19,6 +23,7 @@ namespace Grocery.App.ViewModels
         public async Task SelectCategory(Category category)
         {
             Dictionary<string, object> paramater = new() { { nameof(Category), category } };
+            categoryName = category.Name;
             await Shell.Current.GoToAsync($"{nameof(Views.ProductCategoryView)}", true, paramater);
         }
     }

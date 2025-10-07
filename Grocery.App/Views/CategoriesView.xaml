@@ -7,5 +7,15 @@
              Title="CategoriesView">
     <StackLayout Padding="20" VerticalOptions="Center">
         <Label Text="Categories View" FontSize="24" HorizontalOptions="Center" />
-    </StackLayout>
+		      <Button Text="Laad Categorieën" Command="{Binding SelectCategoryCommand}" />
+        <CollectionView ItemsSource="{Binding Categories}" SelectionMode="Single" SelectedItem="{Binding CategoryName}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="LightGray" CornerRadius="5">
+                        <Label Text="{Binding CategoryName}" FontSize="18" />
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+		</CollectionView>
+	</StackLayout>
 </ContentPage>
