@@ -29,6 +29,13 @@ namespace Grocery.Core.Data.Repositories
         {
             return categories;
         }
+        public Category? Update(Category item)
+        {
+            Category? category = categories.FirstOrDefault(p => p.Id == item.Id);
+            if (category == null) return null;
+            category.Id = item.Id;
+            return category;
+        }
     }
 
 }

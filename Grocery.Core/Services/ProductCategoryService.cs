@@ -1,4 +1,6 @@
-﻿using Grocery.Core.Interfaces.Services;
+﻿using Grocery.Core.Interfaces.Repositories;
+using Grocery.Core.Interfaces.Services;
+using Grocery.Core.Models;
 
 namespace Grocery.Core.Services
 {
@@ -25,6 +27,10 @@ namespace Grocery.Core.Services
         public List<Models.ProductCategory> GetAllOnCategoryId(int id)
         {
             return _productCategoryService.GetAllOnCategoryId(id);
+        }
+        public ProductCategory? Update(ProductCategory item)
+        {
+            return _productCategoryService.Update(item);
         }
     }
 }

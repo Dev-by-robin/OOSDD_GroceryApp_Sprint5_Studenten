@@ -1,32 +1,46 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using Grocery.Core.Interfaces.Services;
-using System.Collections.ObjectModel;
-using Grocery.Core.Models;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Grocery.App.Views;
+using Grocery.Core.Interfaces.Services;
+using Grocery.Core.Models;
+using Grocery.Core.Services;
+using System.Collections.ObjectModel;
 
 namespace Grocery.App.ViewModels
 {
     public partial class CategoriesViewModel : BaseViewModel
     {
-        private readonly ICategoryService _categoryService;
         public ObservableCollection<Category> Categories { get; set; }
-        // Naam per productcategorie
+        private readonly ICategoryService _categoryService;
         [ObservableProperty]
-        public string? categoryName;
+        Client? client;
 
-        public CategoriesViewModel(ICategoryService categoryService)
+        public CategoriesViewModel(ICategoryService categoryService, GlobalViewModel global)
         {
             _categoryService = categoryService;
             Categories = new(_categoryService.GetAll());
         }
+
         [RelayCommand]
         public async Task SelectCategory(Category category)
         {
-            Dictionary<string, object> paramater = new() { { nameof(Category), category } };
-            categoryName = category.Name;
-            await Shell.Current.GoToAsync(nameof(ProductCategoryView), true, paramater);
+            Dictionary<string, object> parameter = new()
+            {
+                {nameof(Category), category }
+            };
+            await Shell.Current.GoToAsync(nameof(ProductCategoryView), true, parameter);
+        }
+
+        public override void OnAppearing()
+        {
+            base.OnAppearing();
+            Categories = new(_categoryService.GetAll());
+        }
+
+        public override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Categories.Clear();
         }
     }
-
 }

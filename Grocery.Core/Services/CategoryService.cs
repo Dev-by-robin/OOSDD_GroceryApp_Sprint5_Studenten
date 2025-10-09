@@ -1,4 +1,6 @@
-﻿using Grocery.Core.Interfaces.Services;
+﻿using Grocery.Core.Interfaces.Repositories;
+using Grocery.Core.Interfaces.Services;
+using Grocery.Core.Models;
 
 namespace Grocery.Core.Services
 {
@@ -15,6 +17,10 @@ namespace Grocery.Core.Services
         {
             return _categoryService.GetAll();
             //throw new NotImplementedException();
+        }
+        public Category? Update(Category item)
+        {
+            return _categoryService.Update(item);
         }
     }
 }

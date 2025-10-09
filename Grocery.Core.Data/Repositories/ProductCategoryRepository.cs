@@ -20,14 +20,21 @@ namespace Grocery.Core.Data.Repositories
               new ProductCategory(4, 5, 4),
             ];
         }
-        public Models.ProductCategory Add(Models.ProductCategory item)
+        public ProductCategory Add(ProductCategory item)
         {
             productCategories.Add(item);
             return item;
         }
-        public List<Models.ProductCategory> GetAll()
+        public List<ProductCategory> GetAll()
         {
             return productCategories;
+        }
+        public ProductCategory? Update(ProductCategory item)
+        {
+            ProductCategory? productCategory = productCategories.FirstOrDefault(c => c.Id == item.Id);
+            if (productCategory == null) return null;
+            productCategory.Id = item.Id;
+            return productCategory;
         }
     }
 

@@ -17,16 +17,28 @@ namespace Grocery.App.ViewModels
         public ObservableCollection<Product> AvailableProducts { get; set; } = [];
 
         [ObservableProperty]
-        Category? category;
+        Category category = new(0, "None");
         public ProductCategoriesViewModel(IProductCategoryService productCategoryService, IProductService productService) 
         { 
             _productCategoryService = productCategoryService;
             _productService = productService;
             //AvailableProducts = GetAvailableProducts();
+            Load(category.Id);
         }
-        partial void OnCategoryChanged(Category? oldValue, Category? newValue) 
+
+        private void Load(int categoryId)
+        {
+            ProductCategories.Clear();
+            foreach (var item in _productCategoryService.GetAllOnCategoryId(categoryId))
+            {
+                ProductCategories.Add(item);
+            }
+        }
+        partial void OnCategoryChanged(Category oldValue, Category newValue) 
         { 
             Category = newValue;
+            Title = newValue.Name;
+            Load(newValue.Id);
         }
         private void GetAvailableProducts()
         {

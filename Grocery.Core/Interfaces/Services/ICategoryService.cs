@@ -10,6 +10,7 @@ namespace Grocery.Core.Interfaces.Services
     public interface ICategoryService
     {
         public List<Category> GetAll();
+        public Category? Update(Category item);
     }
 
 }

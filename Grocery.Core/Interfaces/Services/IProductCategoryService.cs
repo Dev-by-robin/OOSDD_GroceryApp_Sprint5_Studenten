@@ -12,6 +12,7 @@ namespace Grocery.Core.Interfaces.Services
         public ProductCategory Add(ProductCategory item);
         public List<ProductCategory> GetAll();
         public List<ProductCategory> GetAllOnCategoryId(int id);
+        public ProductCategory? Update(ProductCategory item);
     }
 
 }
