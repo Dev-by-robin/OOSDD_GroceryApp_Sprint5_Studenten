@@ -1,4 +1,4 @@
-#GroceryApp sprint5 Studentversie  
+#GroceryApp Sprint 5 Studentversie  
 Dit is de startversie voor studenten voor sprint 5.  
  
 UC15 Toevoegen THT datum aan product is compleet.  
@@ -44,7 +44,9 @@ Stappenplan:
 - Registreer de gemaakte Repo's en services in MauiProgramm  
 - Maak CategoriesViewModel.  
 - Maak CategoriesView.  
-- Registreer De view en het ViewModel in MauiProgramm.  
+- Registreer De view en het ViewModel in MauiProgramm. 
+
+
 - Maak een menu entry in de tabbar in AppShell.xaml en registreer route in AppShell.xaml.cs  
 - Maak ProductCategoriesViewModel.  
 - Maak ProductCategoriesView.  
